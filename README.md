@@ -3,7 +3,7 @@ Enable while you port your config over to homeassistant
 
 ## Installation
 
-```
+```bash
 git clone https://github.com/Br3nda/homeassistant-openhab-component
 cp sensor/openhab.py .homeassistant/custom_components/sensor/
 cp switch/openhab.py .homeassistant/custom_components/switch/
