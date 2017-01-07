@@ -12,7 +12,7 @@ cp switch/openhab.py .homeassistant/custom_components/switch/
 ## Example configuration:
 
 Control openhab switches (on/off) from homeassistant
-```
+```yml
 switch openhab:
   platform: openhab
   host: http://127.0.0.1:8080
@@ -20,7 +20,7 @@ switch openhab:
 
 
 Read everything else
-```
+```yml
 sensor openhab:
   platform: openhab
   host: http://127.0.0.1:8080
