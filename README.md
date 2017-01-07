@@ -25,3 +25,8 @@ sensor openhab:
   platform: openhab
   host: http://127.0.0.1:8080
 ```
+
+## Important note:
+The switches will appear in homeassistant immediately.
+All other items are hidden, until you add config to set hidden: false
+
