@@ -37,12 +37,19 @@ class OpenhabSwitch(SwitchDevice):
         return self._item['state'] == 'ON'
 
     def turn_on(self, **kwargs):
-        _LOGGER.info("Turning on item: {}".format(self._item))
-        requests.post(self._item['link'], 'ON')
+        self._send_command('ON')
 
     def turn_off(self, **kwargs):
-        _LOGGER.info("Turning off item: {}".format(self._item))
-        requests.post(self._item['link'], 'OFF')
+        self._send_command('OFF')
+
+    def _send_command(self, command):
+        _LOGGER.debug("Sending command: {} to item: {}".format(
+            command, self._item))
+        try:
+            requests.post(self._item['link'], command, timeout=10)
+        except requests.exceptions.RequestException as e:
+            _LOGGER.error("Request to openhab failed")
+            _LOGGER.exception(e)
 
     def update(self):
         self._item = requests.get(self._item['link'] + '?type=json').json()
