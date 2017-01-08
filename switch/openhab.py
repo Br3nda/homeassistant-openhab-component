@@ -30,6 +30,7 @@ class OpenhabSwitch(SwitchDevice):
     @property
     def name(self):
         """Return the name of the openhab item."""
+        # Note Openhab doesn't return the friendly name
         return self._item['name']
 
     @property
