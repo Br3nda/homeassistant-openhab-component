@@ -55,9 +55,15 @@ class OpenhabSwitch(SwitchDevice):
             _LOGGER.exception(e)
 
     def update(self):
-        self._item = requests.get(self._item['link'] + '?type=json').json()
-        _LOGGER.info("Fetched item state {}".format(self._item))
-        return self._item['state'] == 'ON'
+        try:
+            self._item = requests.get(self._item['link'] + '?type=json',
+                                      timeout=10).json()
+            _LOGGER.info("Fetched item state from openhab {}".format(
+                self._item))
+            return self._item['state'] == 'ON'
+        except requests.exceptions.RequestException as e:
+            _LOGGER.error("Request to openhab failed")
+            _LOGGER.exception(e)
 
     @property
     def available(self):
