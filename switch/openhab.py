@@ -35,8 +35,8 @@ class OpenhabSwitch(SwitchDevice):
 
     @property
     def is_on(self):
-        _LOGGER.info("Reading cached item state: {}".format(self._item))
         """Return true if switch is on."""
+        _LOGGER.debug("Reading cached item state: {}".format(self._item))
         return self._item['state'] == 'ON'
 
     def turn_on(self, **kwargs):
