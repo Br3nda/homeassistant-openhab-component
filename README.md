@@ -25,3 +25,7 @@ sensor openhab:
   platform: openhab
   host: http://127.0.0.1:8080
 ```
+
+## Limitations
+* Openhab only gives us the name, not the friendly string you see in openhab sitemaps.
+* Openhab doesn't have "units", so the items don't appear with degrees or percentage humidity etc.
