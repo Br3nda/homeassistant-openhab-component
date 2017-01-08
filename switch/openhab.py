@@ -22,6 +22,9 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 class OpenhabSwitch(SwitchDevice):
     # hidden = True
 
+    """ The openhab item"""
+    _item = {}
+
     def __init__(self, item):
         self._item = item
 
