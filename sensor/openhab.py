@@ -3,17 +3,22 @@ from homeassistant.helpers.entity import Entity
 import requests
 
 REQUIREMENTS = ['requests>=2.12.4']
-
+_LOGGER = logging.getLogger(__name__)
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
     """Setup the sensor platform."""
     devices = []
     response = requests.get('{host}/rest/items?type=json'.format(
         host=config.get('host')))
-    for item in response.json()['item']:
-        if item['type'] in ['NumberItem', 'StringItem']:
-            devices.append(OpenhabSensor(item))
-    add_devices(devices)
+    try:    
+        for item in response.json()['item']:
+            if item['type'] in ['NumberItem', 'StringItem']:
+                devices.append(OpenhabSensor(item))
+        add_devices(devices)
+    except:
+        _LOGGER.warning(response.body)
+        raise
+        
 
 
 class OpenhabSensor(Entity):
