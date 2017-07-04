@@ -1,6 +1,7 @@
 from homeassistant.const import TEMP_CELSIUS
 from homeassistant.helpers.entity import Entity
 import requests
+import logging
 
 REQUIREMENTS = ['requests>=2.12.4']
 _LOGGER = logging.getLogger(__name__)
@@ -33,7 +34,7 @@ class OpenhabSensor(Entity):
     @property
     def state(self):
         """Return the state of the sensor."""
-        return self.data['state']
+        return self._item['state']
 
     def update(self):
         self._item = requests.get(self._item['link'] + '?type=json').json()
