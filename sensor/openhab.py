@@ -34,7 +34,7 @@ class OpenhabSensor(Entity):
     @property
     def state(self):
         """Return the state of the sensor."""
-        return self.data['state']
+        return self._item['state']
 
     def update(self):
         self._item = requests.get(self._item['link'] + '?type=json').json()
