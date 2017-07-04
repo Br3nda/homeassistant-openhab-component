@@ -1,6 +1,7 @@
 from homeassistant.const import TEMP_CELSIUS
 from homeassistant.helpers.entity import Entity
 import requests
+import logging
 
 REQUIREMENTS = ['requests>=2.12.4']
 _LOGGER = logging.getLogger(__name__)
