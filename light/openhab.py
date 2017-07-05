@@ -26,21 +26,6 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
     add_devices(devices)
 
-    if resource is None:
-        _LOGGER.error("Missing required variable: resource")
-        return False
-
-    try:
-        requests.get(resource, timeout=10)
-    except requests.exceptions.MissingSchema:
-        _LOGGER.error("Missing resource or schema in configuration. "
-                      "Add http:// or https:// to your URL")
-        return False
-    except requests.exceptions.ConnectionError:
-        _LOGGER.error("No route to resource/endpoint: %s", resource)
-        return False
-
-
 
 class OpenhabLight(Light):
     """Provide an Openhab light."""
