@@ -19,6 +19,12 @@ switch openhab:
   host: http://127.0.0.1:8080
 ```
 
+Control openhab dimmers as lights in homeassistant
+```yml
+lights openhab:
+  platform: openhab
+  host: http://127.0.0.1:8080
+```
 
 Read everything else
 ```yml
@@ -28,5 +34,5 @@ sensor openhab:
 ```
 
 ## Limitations
-* Openhab only gives us the name, not the friendly string you see in openhab sitemaps.
+* Openhab only gives us the name, not the friendly string you see in openhab sitemaps (you can use customize friendly_name to override once you know the device names).
 * Openhab doesn't have "units", so the items don't appear with degrees or percentage humidity etc.
