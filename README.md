@@ -21,7 +21,7 @@ switch openhab:
 
 Control openhab dimmers as lights in homeassistant
 ```yml
-lights openhab:
+light openhab:
   platform: openhab
   host: http://127.0.0.1:8080
 ```
